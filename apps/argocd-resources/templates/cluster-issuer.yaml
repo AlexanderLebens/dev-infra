@@ -10,9 +10,13 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-issuer-account-key
     solvers:
-      - selector: {}
+      - selector:
+          dnsZones:
+          - 'alexlebens.dev'
+          - '*.alexlebens.dev'
         dns01:
           cloudflare:
+            email: alexanderlebens@gmail.com      
             apiTokenSecretRef:
               name: cloudflare-api-token
               key: api-token
