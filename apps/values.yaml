@@ -7,6 +7,6 @@ argocd:
 metricsserver:
   enable: true
 traefik:
-  enable: false
+  enable: true
 certmanager:
-  enable: false
+  enable: true
