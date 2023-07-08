@@ -2,6 +2,10 @@
 domain: alexlebens.dev
 storageClass: "do-block-storage"
 # Application
+argocd:
+  enable: false
+metricsserver:
+  enable: false
 traefik:
   enable: false
 certmanager:
