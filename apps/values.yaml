@@ -3,4 +3,6 @@ domain: alexlebens.dev
 storageClass: "do-block-storage"
 # Application
 traefik:
-  enable: true
+  enable: false
+cert-manager:
+  enable: false
