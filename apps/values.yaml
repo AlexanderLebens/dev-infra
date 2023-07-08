@@ -4,5 +4,5 @@ storageClass: "do-block-storage"
 # Application
 traefik:
   enable: false
-cert-manager:
+certmanager:
   enable: false
