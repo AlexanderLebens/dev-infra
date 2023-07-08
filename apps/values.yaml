@@ -5,7 +5,7 @@ storageClass: "do-block-storage"
 argocd:
   enable: true
 metricsserver:
-  enable: false
+  enable: true
 traefik:
   enable: false
 certmanager:
