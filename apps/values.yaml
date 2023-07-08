@@ -2,11 +2,5 @@
 domain: alexlebens.dev
 storageClass: "do-block-storage"
 # Application
-loki:
-  enable: false
-prometheus:
-  enable: false
-  storageSize: 50Gi
-  retention: 5d
 traefik:
   enable: true
