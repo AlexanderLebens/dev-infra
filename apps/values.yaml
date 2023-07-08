@@ -3,7 +3,7 @@ domain: alexlebens.dev
 storageClass: "do-block-storage"
 # Application
 argocd:
-  enable: false
+  enable: true
 metricsserver:
   enable: false
 traefik:
