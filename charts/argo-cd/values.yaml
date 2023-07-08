@@ -1,7 +1,5 @@
 argo-cd:
   configs:
-    params:
-      server.insecure: true
     cm:
       # Patch for supporting traefik ingress health check
       resource.customizations: |
