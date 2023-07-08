@@ -15,7 +15,7 @@ spec:
         - name: clusterDomain
           value: {{ .Values.domain }}
         - server.config:
-          value:
+          value: |
             # Patch for supporting traefik ingress health check
             resource.customizations: |
               networking.k8s.io/Ingress:
