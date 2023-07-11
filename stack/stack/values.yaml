@@ -3,6 +3,7 @@ gitops:
   revision: HEAD
 stacks:
   - name: stack
+    namespace: argocd
   - name: services
   - name: platform
 #  - name: apps
