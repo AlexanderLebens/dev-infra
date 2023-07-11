@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-tekton-dashboard
+  namespace: tekton-pipelines
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: &host tekton.{{ .Values.domain }}
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: tekton-dashboard
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - *host
+      secretName: tekton-secret-tls

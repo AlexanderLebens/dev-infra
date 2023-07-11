@@ -1,0 +1,31 @@
+gitea:
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-issuer
+    hosts:
+      - host: &host gitea.alexlebens.dev
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: gitea-secret-tls
+        hosts:
+          - *host
+  gitea:
+    admin:
+      existingSecret: gitea-admin-secret
+    config:
+      server:
+        LANDING_PAGE: explore
+        ROOT_URL: https://gitea.alexlebens.dev
+      webhook:
+        ALLOWED_HOST_LIST: private
+  persistence:
+    storageClass: do-block-storage
+  postgresql:
+    persistence:
+      storageClass: do-block-storage

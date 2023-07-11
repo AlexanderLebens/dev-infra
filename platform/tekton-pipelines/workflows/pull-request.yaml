@@ -1,0 +1,41 @@
+apiVersion: workflows.tekton.dev/v1alpha1
+kind: Workflow
+metadata:
+  name: pull-request
+  namespace: tekton-workflows
+spec:
+  triggers:
+    - event:
+        type: pull_request
+        secret:
+          secretName: webhook-secret
+          secretKey: token
+      bindings:
+        - name: git_url
+          value: $(body.repository.clone_url)
+        - name: git_revision
+          value: $(body.pull_request.head.sha)
+  params:
+    - name: git_url
+      default: https://github.com/AlexanderLebens/dev-infra
+    - name: git_revision
+      default: main
+  pipelineRef:
+    resolver: git
+    params:
+      - name: url
+        value: $(tt.params.git_url)
+      - name: revision
+        value: $(tt.params.git_revision)
+      - name: pathInRepo
+        value: .ci/pull-request.yaml
+  workspaces:
+    - name: shared-data
+      volumeClaimTemplate:
+        spec:
+          storageClassName: do-block-storage
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 128Mi

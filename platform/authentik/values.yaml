@@ -1,0 +1,33 @@
+authentik:
+  secret_key:
+    existingSecret: authentik-key-secret
+  error_reporting:
+      enabled: true
+  postgresql:
+      password:
+        existingSecret: authentik-postgres-secret
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+  hosts:
+    - host: &host authentik.alexlebens.dev
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: authentik-secret-tls
+      hosts:
+        - *host
+postgresql:
+  enabled: true
+  postgresqlPassword:
+    existingSecret: authentik-postgres-secret
+redis:
+  enabled: true
+prometheus:
+  serviceMonitor:
+    create: true

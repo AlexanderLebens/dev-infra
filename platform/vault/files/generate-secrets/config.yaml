@@ -1,0 +1,27 @@
+# Gitea
+- path: gitea/admin
+  data:
+    - key: password
+      length: 32
+      special: true
+
+# Tekton
+- path: tekton/webhook
+  data:
+    - key: token
+      length: 32
+      special: false
+
+# Authentik secret key
+- path: authentik/key
+  data:
+    - key: token
+      length: 32
+      special: true
+
+# Authentik postgres
+- path: authentik/postgres
+  data:
+    - key: password
+      length: 32
+      special: false

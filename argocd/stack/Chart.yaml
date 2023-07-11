@@ -1,0 +1,4 @@
+apiVersion: v2
+name: stack
+description: infrastructure for alexlebens.dev
+version: 0.2.0

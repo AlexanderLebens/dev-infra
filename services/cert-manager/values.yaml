@@ -1,0 +1,10 @@
+cert-manager:
+  installCRDs: true
+  prometheus:
+    enabled: true
+    servicemonitor:
+      enabled: true
+      honorLabels: true
+domain:
+  email: alexanderlebens@gmail.com   
+  host: alexlebens.dev
