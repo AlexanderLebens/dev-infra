@@ -46,10 +46,7 @@ argo-cd:
         traefik.ingress.kubernetes.io/router.tls: "true"
         cert-manager.io/cluster-issuer: letsencrypt-issuer
       hosts:
-        - host: &host argocd.alexlebens.dev
-          paths:
-            - path: /
-              pathType: Prefix
+        - &host argocd.alexlebens.dev
       tls:
         - secretName: argocd-secret-tls
           hosts:
