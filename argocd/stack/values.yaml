@@ -3,10 +3,6 @@ gitops:
   revision: HEAD
 stacks:
   - name: argocd
-    wave: 0
   - name: services
-    wave: 1
   - name: platform
-    wave: 2
 #  - name: apps
-#    wave: 3

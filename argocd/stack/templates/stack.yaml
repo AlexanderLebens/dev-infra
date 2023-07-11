@@ -15,8 +15,6 @@ spec:
   template:
     metadata:
       name: '{{ `{{path.basename}}` }}'
-      annotations:
-        argocd.argoproj.io/sync-wave: {{ $stack.wave }}
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
