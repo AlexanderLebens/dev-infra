@@ -2,7 +2,7 @@ gitops:
   repo: git@github.com:AlexanderLebens/dev-infra.git
   revision: HEAD
 stacks:
-  - name: argocd
+  - name: stack
   - name: services
   - name: platform
 #  - name: apps
