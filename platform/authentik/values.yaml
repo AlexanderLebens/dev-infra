@@ -1,11 +1,6 @@
 authentik:
-  secret_key:
-    existingSecret: authentik-key-secret
   error_reporting:
       enabled: true
-  postgresql:
-      password:
-        existingSecret: authentik-postgres-secret
 ingress:
   enabled: true
   className: traefik
@@ -24,10 +19,21 @@ ingress:
         - *host
 postgresql:
   enabled: true
-  postgresqlPassword:
-    existingSecret: authentik-postgres-secret
 redis:
   enabled: true
 prometheus:
   serviceMonitor:
     create: true
+envValueFrom:
+  AUTHENTIK_SECRET_KEY:
+    secretKeyRef:
+      key: token
+      name: authentik-key-secret
+  AUTHENTIK_POSTGRESQL__PASSWORD:
+    secretKeyRef:
+      key: password
+      name: authentik-postgres-secret
+  POSTGRES_PASSWORD:
+    secretKeyRef:
+      key: password
+      name: authentik-postgres-secret
