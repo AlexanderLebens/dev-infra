@@ -27,13 +27,13 @@ prometheus:
 envValueFrom:
   AUTHENTIK_SECRET_KEY:
     secretKeyRef:
-      key: token
-      name: authentik-key-secret
+      key: authentik-key-secret
+      name: token
   AUTHENTIK_POSTGRESQL__PASSWORD:
     secretKeyRef:
-      key: password
-      name: authentik-postgres-secret
+      key: authentik-postgres-secret
+      name: password
   POSTGRES_PASSWORD:
     secretKeyRef:
-      key: password
-      name: authentik-postgres-secret
+      key: authentik-postgres-secret
+      name: password
