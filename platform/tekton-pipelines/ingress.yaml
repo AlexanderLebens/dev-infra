@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host tekton.{{ .Values.domain }}
+    - host: &host tekton.alexlebens.dev
       http:
         paths:
           - pathType: ImplementationSpecific
