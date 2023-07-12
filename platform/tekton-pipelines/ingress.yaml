@@ -8,12 +8,13 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
     cert-manager.io/cluster-issuer: letsencrypt-issuer
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: &host tekton.alexlebens.dev
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: tekton-dashboard
