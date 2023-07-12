@@ -68,13 +68,13 @@ spec:
 
   ingress:
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-      hajimari.io/appName: Vault
-      hajimari.io/icon: database-lock
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
     spec:
-      ingressClassName: nginx
+      ingressClassName: traefik
       rules:
-        - host: &host vault.khuedoan.com
+        - host: &host vault.alexlebens.dev
           http:
             paths:
               - backend:
@@ -87,7 +87,7 @@ spec:
       tls:
         - hosts:
             - *host
-          secretName: vault-tls-certificate
+          secretName: vault-secret-tls
 
   # Use local disk to store Vault file data, see config section.
   volumes:
