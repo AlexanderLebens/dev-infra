@@ -1,22 +1,13 @@
-envValueFrom:
-  AUTHENTIK_SECRET_KEY:
-    secretKeyRef:
-      key: token
-      name: authentik-key-secret
-  POSTGRES_PASSWORD:
-    secretKeyRef:
-      key: password
-      name: authentik-postgres-secret
 authentik:
   error_reporting:
-      enabled: true
+    enabled: true
 ingress:
   enabled: true
   className: traefik
   annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.tls: "true"
-      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
   hosts:
     - host: &host authentik.alexlebens.dev
       paths:
@@ -33,3 +24,12 @@ redis:
 prometheus:
   serviceMonitor:
     create: true
+envValueFrom:
+  AUTHENTIK_SECRET_KEY:
+    secretKeyRef:
+      key: token
+      name: authentik-key-secret
+  POSTGRES_PASSWORD:
+    secretKeyRef:
+      key: password
+      name: authentik-postgres-secret
