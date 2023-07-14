@@ -18,6 +18,7 @@ argo-cd:
           - "*"
 
       # Authentik
+      url: https://argocd.alexlebens.dev/
       dex.config: |
           connectors:
           - config:
