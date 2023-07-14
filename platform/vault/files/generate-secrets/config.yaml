@@ -5,6 +5,18 @@
       length: 32
       special: true
 
+- path: gitea/oidc
+  data:
+    - key: secret
+      length: 32
+      special: true
+
+- path: gitea/oidc
+  data:
+    - key: key
+      length: 32
+      special: true
+
 # Tekton
 - path: tekton/webhook
   data:
