@@ -32,9 +32,9 @@ authentik:
         name: authentik-key-secret
     AUTHENTIK_POSTGRESQL__PASSWORD:
       secretKeyRef:
-        key: postgresql-postgres-password
+        key: postgresql-password
         name: authentik-postgresql
     POSTGRES_PASSWORD:
       secretKeyRef:
-        key: postgresql-postgres-password
+        key: postgresql-password
         name: authentik-postgresql
