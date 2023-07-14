@@ -16,7 +16,6 @@ argo-cd:
           - CiliumIdentity
           clusters:
           - "*"
-
       # Authentik
       url: https://argocd.alexlebens.dev
       dex.config: |
@@ -33,10 +32,9 @@ argo-cd:
           name: authentik
           type: oidc
           id: authentik
-
     rbac:
       policy.csv: |
-          g, ArgoCD Admins, role:admin
+        g, ArgoCD Admins, role:admin
   server:
     extraArgs:
       - --insecure
@@ -45,7 +43,7 @@ argo-cd:
         - type: helm
           name: argo-cd
           url: 'https://argoproj.github.io/argo-helm'
-      statusbadge.enabled: 'true'
+      statusbadge.enabled: "true"
       resource.customizations.health.argoproj.io_Application: |
         hs = {}
         hs.status = "Progressing"
