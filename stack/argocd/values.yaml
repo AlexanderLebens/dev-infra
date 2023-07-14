@@ -18,7 +18,7 @@ argo-cd:
           - "*"
 
       # Authentik
-      url: https://argocd.alexlebens.dev/
+      url: https://argocd.alexlebens.dev
       oidc.config: |
         name: Authentik
         issuer: https://authentik.alexlebens.dev/application/o/argocd/
