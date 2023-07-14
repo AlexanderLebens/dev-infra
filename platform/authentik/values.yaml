@@ -37,8 +37,8 @@ authentik:
         name: authentik-key-secret
     AUTHENTIK_POSTGRESQL__PASSWORD:
       secretKeyRef:
-        key: password
-        name: authentik-postgresql-secret
+        key: postgres-password
+        name: authentik-postgresql
 postgresql:
   customLivenessProbe:
     exec:
@@ -81,10 +81,10 @@ postgresql:
     - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
-          key: password
-          name: authentik-postgresql-secret
+          key: postgres-password
+          name: authentik-postgresql
     - name: POSTGRES_POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
-          key: password
-          name: authentik-postgresql-secret
+          key: postgres-password
+          name: authentik-postgresql
