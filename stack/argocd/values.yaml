@@ -22,7 +22,7 @@ argo-cd:
         connectors:
         - config:
             issuer: https://authentik.alexlebens.dev/application/o/argocd/
-            clientID: QfRVvCmpSGjsSXWWnnD9Mjc8oZmnNg48MMI35hAc
+            clientID: 8svkyvh0ochInJgMIaFjyUMlF4eDe2xgKKeOM91g
             clientSecret: $dex.authentik.clientSecret
             redirectURI: http://localhost:8085/auth/callback
             insecureEnableGroups: true
