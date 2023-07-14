@@ -22,12 +22,12 @@
 # Authentik postgres
 - path: authentik/postgres
   data:
-    - key: postgresql-password
+    - key: password
       length: 32
       special: false
 
-- path: authentik/postgres
+- path: authentik/postgresql-postgres
   data:
-    - key: postgresql-postgres-password
+    - key: password
       length: 32
       special: false
