@@ -24,7 +24,7 @@ argo-cd:
             issuer: https://authentik.alexlebens.dev/application/o/argocd/
             clientID: QfRVvCmpSGjsSXWWnnD9Mjc8oZmnNg48MMI35hAc
             clientSecret: $dex.authentik.clientSecret
-            redirectURI: https://argocd.alexlebens.dev/api/dex/callback
+            redirectURI: http://localhost:8085/auth/callback
             insecureEnableGroups: true
             scopes:
               - openid
