@@ -28,7 +28,9 @@ gitea:
       - name: "authentik"
         provider: "openidConnect"
         existingSecret: gitea-oidc-secret
-        autoDiscoveryUrl: "https://authentik.alexlebens.dev/application/o/gitea/.well-known/openid-configuration"
+        customAuthUrl: https://authentik.alexlebens.dev/application/o/authorize/
+        customTokenUrl: https://authentik.alexlebens.dev/application/o/token/
+        customProfileUrl: https://authentik.alexlebens.dev/application/o/userinfo/
         iconUrl: "https://goauthentik.io/img/icon.png"
         scopes: "email profile"
   persistence:
