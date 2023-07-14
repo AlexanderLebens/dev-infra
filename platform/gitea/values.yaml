@@ -25,6 +25,13 @@ gitea:
       webhook:
         ALLOWED_HOST_LIST: private
         scopes: email profile
+    # Is currently not working
+    #oauth:
+    #  - name: authentik
+    #    provider: openidConnect
+    #    existingSecret: gitea-oidc-secret
+    #    autoDiscoveryUrl: https://authentik.alexlebens.dev/application/o/gitea/.well-known/openid-configuration
+    #    iconUrl: https://goauthentik.io/img/icon.png
   persistence:
     storageClass: do-block-storage
   postgresql:
