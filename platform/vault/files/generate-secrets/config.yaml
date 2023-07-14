@@ -18,10 +18,3 @@
     - key: token
       length: 32
       special: true
-
-# Authentik postgres
-- path: authentik/postgres
-  data:
-    - key: password
-      length: 32
-      special: false

@@ -30,11 +30,7 @@ authentik:
       secretKeyRef:
         key: token
         name: authentik-key-secret
-    AUTHENTIK_POSTGRESQL__PASSWORD:
-      secretKeyRef:
-        key: postgresql-password
-        name: authentik-postgresql
     POSTGRES_PASSWORD:
       secretKeyRef:
-        key: postgresql-password
+        key: postgresql-postgres-password
         name: authentik-postgresql
