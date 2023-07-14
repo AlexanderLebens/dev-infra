@@ -16,6 +16,25 @@ argo-cd:
           - CiliumIdentity
           clusters:
           - "*"
+
+      # Authentik
+      dex.config: |
+          connectors:
+          - config:
+              issuer: https://authentik.alexlebens.dev/application/o/argocd/
+              clientID: QfRVvCmpSGjsSXWWnnD9Mjc8oZmnNg48MMI35hAc
+              clientSecret: $dex.authentik.clientSecret
+              insecureEnableGroups: true
+              scopes:
+                - openid
+                - profile
+                - email
+            name: authentik
+            type: oidc
+            id: authentik
+  rbac:
+    policy.csv: |
+        g, ArgoCD Admins, role:admin
   server:
     extraArgs:
       - --insecure
@@ -56,7 +75,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
   dex:
-    enabled: false
+    enabled: true
   controller:
     metrics: *metrics
   repoServer:
