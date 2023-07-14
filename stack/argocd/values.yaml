@@ -32,9 +32,9 @@ argo-cd:
             name: authentik
             type: oidc
             id: authentik
-  rbac:
-    policy.csv: |
-        g, ArgoCD Admins, role:admin
+    rbac:
+      policy.csv: |
+          g, ArgoCD Admins, role:admin
   server:
     extraArgs:
       - --insecure
