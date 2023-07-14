@@ -22,7 +22,7 @@ argo-cd:
       dex.config: |
           connectors:
           - config:
-              issuer: http://authentik.alexlebens.dev/application/o/argocd/
+              issuer: https://authentik.alexlebens.dev/application/o/argocd/
               clientID: QfRVvCmpSGjsSXWWnnD9Mjc8oZmnNg48MMI35hAc
               clientSecret: $dex.authentik.clientSecret
               insecureEnableGroups: true
