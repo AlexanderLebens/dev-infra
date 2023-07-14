@@ -3,9 +3,9 @@ gitea:
     enabled: true
     className: traefik
     annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: "true"
-        cert-manager.io/cluster-issuer: letsencrypt-issuer
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
     hosts:
       - host: &host gitea.alexlebens.dev
         paths:
@@ -24,13 +24,6 @@ gitea:
         ROOT_URL: https://gitea.alexlebens.dev
       webhook:
         ALLOWED_HOST_LIST: private
-    oauth:
-      - name: "Authentik"
-        provider: "openidConnect"
-        existingSecret: gitea-oidc-secret
-        autoDiscoveryUrl: "https://authentik.alexlebens.dev/application/o/gitea-slug/.well-known/openid-configuration"
-        iconUrl: "https://goauthentik.io/img/icon.png"
-        scopes: "email profile"
   persistence:
     storageClass: do-block-storage
   postgresql:
