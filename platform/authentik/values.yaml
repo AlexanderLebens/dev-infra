@@ -88,5 +88,3 @@ postgresql:
         secretKeyRef:
           key: password
           name: authentik-postgresql-secret
-  metrics:
-    enabled: true
