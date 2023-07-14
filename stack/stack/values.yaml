@@ -1,5 +1,5 @@
 gitops:
-  repo: git@github.com:AlexanderLebens/dev-infra.git
+  repo: http://gitea-http.gitea:3000/alexlebens/dev-infra
   revision: HEAD
 stacks:
   - name: stack
