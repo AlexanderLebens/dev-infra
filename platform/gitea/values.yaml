@@ -25,7 +25,7 @@ gitea:
       webhook:
         ALLOWED_HOST_LIST: private
     oauth:
-      - name: "Authentik"
+      - name: "authentik"
         provider: "openidConnect"
         existingSecret: gitea-oidc-secret
         autoDiscoveryUrl: "https://authentik.alexlebens.dev/application/o/gitea-slug/.well-known/openid-configuration"
