@@ -3,7 +3,7 @@ authentik:
     error_reporting:
       enabled: true
     postgresql:
-      host: postgresql
+      host: authentik-postgresql
       name: authentik
       user: authentik
       port: 5432
