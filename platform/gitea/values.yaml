@@ -25,6 +25,11 @@ gitea:
       webhook:
         ALLOWED_HOST_LIST: private
         scopes: email profile
+      service:
+        DISABLE_REGISTRATION: true
+        SHOW_REGISTRATION_BUTTON: false
+        explore:
+          REQUIRE_SIGNIN_VIEW: true
     # Is currently not working
     #oauth:
     #  - name: authentik
