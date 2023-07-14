@@ -5,13 +5,13 @@
       length: 32
       special: true
 
-- path: gitea/oidc
+- path: gitea/oidc/secret
   data:
     - key: secret
       length: 32
       special: true
 
-- path: gitea/oidc
+- path: gitea/oidc/key
   data:
     - key: key
       length: 32
