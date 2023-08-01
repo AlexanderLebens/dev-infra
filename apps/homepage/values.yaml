@@ -1,5 +1,8 @@
 homepage:
-  # Enable the ingress to expose Homepage to the network.
+  enableRbac: true
+  serviceAccount:
+    name: homepage
+    create: true
   ingress:
     main:
       enabled: true
@@ -23,7 +26,6 @@ homepage:
         - secretName: homepage-secret-tls
           hosts:
             - *host
-
   config:
     bookmarks:
       - External Services:
