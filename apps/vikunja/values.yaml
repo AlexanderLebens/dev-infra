@@ -90,3 +90,5 @@ vikunja:
       enabled: true
       existingSecret: vikunja-credentials
       existingSecretPasswordKey: redispassword
+    replica:
+      replicaCount: 1
