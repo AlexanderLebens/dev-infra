@@ -1,86 +1,65 @@
-#
-# IMPORTANT NOTE
-#
-# This chart inherits from our common library chart. You can check the default values/options here:
-# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
-#
-
-image:
-  # -- Caddy reverse proxy image and tag
-  repository: caddy
-  # -- vikunja api image tag
-  tag: 2.4.2-alpine
-  # vikunja api image pull policy
-  pullPolicy: IfNotPresent
-
-caddy:
-  # -- Disable auto tls if behind another loadbalancer or ingress
-  noTls: false
-
 vikunja:
-  # -- Provide Vikunja config as YAML string
-  config: |-
-    service:
-      jwtsecret: "myVeryComplexJWTSecret"
-
-# -- Configures service settings for the chart.
-# @default -- See values.yaml
-service:
-  main:
-    ports:
-      http:
-        port: 8080
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
-
-additionalContainers:
-  # -- Set up the vikunja API container.
-  # @default -- See values.yaml
-  api:
-    name: api
-    # -- Vikunja api image and tag
-    image: vikunja/api:0.17.1
-    imagePullPolicy: IfNotPresent
-    # -- You can declare most Vikunja parameters as environment variables.
-    # Please consult https://vikunja.io/docs/config-options/ to see all parameters.
-    # Note that parameters that are an array cannot be defined as environment variables (like the OpenID Connect settings). Use the vikunja.config Value for that.
-    # @default -- See below
-    env: []
-      # - name: VIKUNJA_SERVICE_JWTSECRET
-      #   value: myVeryComplexJWTSecret
-      # - name: VIKUNJA_DATABASE_TYPE
-      #   value: "postgres"
-      # - name: VIKUNJA_DATABASE_HOST
-      #   value: db
-      # - name: VIKUNJA_DATABASE_DATABASE
-      #   value: vikunja
-      # - name: VIKUNJA_DATABASE_USER
-      #   value: "vikunja"
-      # - name: VIKUNJA_DATABASE_PASSWORD
-      #   value: password
-    volumeMounts:
-      - name: vikunja-config
-        mountPath: /etc/vikunja/config.yml
-        subPath: Vikunja.yaml
-      # - name: files
-      #   mountPath: /app/vikunja/files
-
-  # -- Set up the vikunja frontend container.
-  # @default -- See values.yaml
   frontend:
-    name: frontend
-    # -- Vikunja frontend image and tag
-    image: vikunja/frontend:0.17.0
-    imagePullPolicy: IfNotPresent
-
-# -- Configure persistence settings for the chart under this key.
-# @default -- See values.yaml
-persistence:
-# -- Volume used for static files
-  files:
-    enabled: false
-    mountpath: /app/vikunja/files
+    apiUrl: https://vikunja.alexlebens.dev/
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-issuer
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: 'true'
+      hosts:
+        - host: vikunja.alexlebens.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - vikunja.alexlebens.dev
+          secretName: vikunja-secret-tls
+  api:
+    config:
+      auth:
+        local:
+          enabled: disabled
+        openid:
+          enabled: true
+          redirecturl: https://vikunja.alexlebens.dev/auth/openid/
+          providers:
+            - name: authentik
+              authurl: https://authentik.alexlebens.dev/application/o/vikunja/
+              clientid: mi6i7dPwBIRdxomnqrZNsu3t7dagRqn4apS90XK2
+              clientsecret: 0ZLnh8KroFInGQW9eKl0WAoxXfBrqpiRDePHUCuUCv9JqeVvLd5c1evFJY9EcwtEUP8HopEaIcZH6MBjJG4T5MbxZcXxob21oVIICuuaWEcte3lxyBrYsxPy6ElAVACl
+      service:
+        motd: Welcome to Vikunja
+        frontendurl: https://vikunja.alexlebens.dev/
+        timezone: MDT
+      database:
+        type: sqlite
+        path: /sqlite/vikunja.db
+      cache:
+        enabled: false
+    persistence:
+      enabled: false
+      spec: {}
+        # accessModes: ["ReadWriteOnce"]
+        # resources:
+        #   requests:
+        #     storage: 1Gi
+        # storageClassName: openebs-hostpath
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-issuer
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: 'true'
+      hosts:
+        - host: vikunja.alexlebens.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - vikunja.alexlebens.dev
+          secretName: vikunja-secret-tls
