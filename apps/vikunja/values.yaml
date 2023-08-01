@@ -7,7 +7,7 @@ vikunja:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-issuer
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: 'true'
+        traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
         - host: vikunja.alexlebens.dev
           paths:
@@ -35,35 +35,24 @@ vikunja:
         frontendurl: https://vikunja.alexlebens.dev/
         timezone: MDT
       database:
-        type: sqlite
-        path: /sqlite/vikunja.db
+        type: postgres
+        user: vikunja
+        host: postgresql
+        database: vikunja
       cache:
-        enabled: false
-    persistence:
-      files:
         enabled: true
-        mountPath: /app/vikunja/files
-      sqlite:
+        type: redis
+      redis:
         enabled: true
-        mountPath: /sqlite/vikunja.db
-      vikunja-nginx:
-        enabled: false
-      vikunja-config:
-        enabled: true
-        type: secret
-        objectName: config
-        targetSelector:
-          main:
-            main:
-              subPath: config.yaml
-              mountPath: /etc/vikunja/config.yaml
+        host: redis
+        db: 0
     ingress:
       enabled: true
       className: traefik
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-issuer
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: 'true'
+        traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
         - host: vikunja.alexlebens.dev
           paths:
@@ -73,3 +62,31 @@ vikunja:
         - hosts:
             - vikunja.alexlebens.dev
           secretName: vikunja-secret-tls
+    envFrom:
+      - name: VIKUNJA_DATABASE_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: vikunja-credentials
+            key: dbpassword
+      - name: VIKUNJA_REDIS_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: vikunja-credentials
+            key: redispassword
+  postgresqlEnabled: true
+  postgresql:
+    postgresql:
+      auth:
+        username: vikunja
+        database: vikunja
+        existingSecret: vikunja-credentials
+        secretKeys:
+          adminPasswordKey: dbpassword
+          userPasswordKey: dbpassword
+          replicationPasswordKey: dbpassword
+  redisEnabled: true
+  redis:
+    auth:
+      enabled: true
+      existingSecret: vikunja-credentials
+      existingSecretPasswordKey: redispassword
