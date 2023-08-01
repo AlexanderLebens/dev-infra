@@ -1,7 +1,7 @@
 argo-cd:
   configs:
     cm:
-      admin.enabled: false
+      admin.enabled: true
       
       # Patch for supporting traefik ingress health check
       resource.customizations: |
