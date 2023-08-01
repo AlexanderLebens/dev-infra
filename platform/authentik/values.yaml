@@ -2,6 +2,8 @@ authentik:
   authentik:
     error_reporting:
       enabled: true
+    postgresql:
+        password: "Q5t1CzkyMR"
   ingress:
     enabled: true
     className: traefik
@@ -20,6 +22,7 @@ authentik:
           - *host
   postgresql:
     enabled: true
+    postgresqlPassword: "Q5t1CzkyMR"
   redis:
     enabled: true
   prometheus:
@@ -30,7 +33,7 @@ authentik:
       secretKeyRef:
         key: token
         name: authentik-key-secret
-    AUTHENTIK_POSTGRESQL__PASSWORD:
-      secretKeyRef:
-        name: authentik-postgresql
-        key: postgresql-password
+#    AUTHENTIK_POSTGRESQL__PASSWORD:
+#      secretKeyRef:
+#        name: authentik-postgresql
+#        key: postgresql-password
