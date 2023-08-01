@@ -1,4 +1,7 @@
 homepage:
+  image:
+    repository: ghcr.io/benphelps/homepage
+    tag: latest
   enableRbac: true
   serviceAccount:
     name: homepage
