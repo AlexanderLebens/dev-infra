@@ -40,13 +40,23 @@ vikunja:
       cache:
         enabled: false
     persistence:
-      enabled: false
-      spec: {}
-        # accessModes: ["ReadWriteOnce"]
-        # resources:
-        #   requests:
-        #     storage: 1Gi
-        # storageClassName: openebs-hostpath
+      files:
+        enabled: true
+        mountPath: /app/vikunja/files
+      sqlite:
+        enabled: true
+        mountPath: /sqlite/vikunja.db
+      vikunja-nginx:
+        enabled: false
+      vikunja-config:
+        enabled: true
+        type: secret
+        objectName: config
+        targetSelector:
+          main:
+            main:
+              subPath: config.yaml
+              mountPath: /etc/vikunja/config.yaml
     ingress:
       enabled: true
       className: traefik
