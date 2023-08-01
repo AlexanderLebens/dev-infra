@@ -6,4 +6,4 @@ stacks:
     namespace: argocd
   - name: services
   - name: platform
-#  - name: apps
+  - name: apps
