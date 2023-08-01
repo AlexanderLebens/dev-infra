@@ -53,7 +53,7 @@ homepage:
           - Vikunja:
               icon: vikunja.png
               description: Notes and Kanban
-              href: https://vikunja.alexlebens.net
+              href: https://vikunja.alexlebens.dev
 
       - Platform:
           - ArgoCD:
