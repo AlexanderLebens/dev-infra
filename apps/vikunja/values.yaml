@@ -37,7 +37,7 @@ vikunja:
       database:
         type: postgres
         user: vikunja
-        password: 35etdgcb#%ETDGCB
+        password: supersecret
         host: vikunja-postgresql
         database: vikunja
       cache:
@@ -46,7 +46,7 @@ vikunja:
       redis:
         enabled: true
         host: vikunja-redis-master:6379
-        password: 35etdgcb#%ETDGCB
+        password: supersecret
         db: 0
     ingress:
       enabled: true
