@@ -44,7 +44,7 @@ vikunja:
         type: redis
       redis:
         enabled: true
-        host: redis
+        host: redis:6379
         db: 0
     ingress:
       enabled: true
