@@ -1,6 +1,8 @@
 vikunja:
   frontend:
     apiUrl: https://vikunja.alexlebens.dev/api/v1/
+    securityContext:
+      allowPrivilegeEscalation: true
     ingress:
       enabled: true
       className: traefik
