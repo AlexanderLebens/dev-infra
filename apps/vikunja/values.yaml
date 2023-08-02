@@ -37,7 +37,7 @@ vikunja:
       database:
         type: postgres
         user: vikunja
-        password: supersecret
+        password: z1lUPGYpSm
         host: vikunja-postgresql
         database: vikunja
       cache:
