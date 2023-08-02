@@ -19,6 +19,10 @@ vikunja:
           secretName: vikunja-secret-tls
   api:
     config:
+      service:
+        frontendurl: https://vikunja.alexlebens.dev
+        enableregistration: true
+        timezone: MST
       auth:
         local:
           enabled: disabled
@@ -43,11 +47,14 @@ vikunja:
       hosts:
         - host: vikunja.alexlebens.dev
           paths:
-            - path: /api/v1
+            - path: /api/v1/
               pathType: Prefix
       tls:
         - hosts:
             - vikunja.alexlebens.dev
           secretName: vikunja-secret-tls
+    extraVolumeMounts:
+      - mountPath: /sqlite/vikunja.db
+        name: sqlite
   postgresqlEnabled: false
   redisEnabled: false
