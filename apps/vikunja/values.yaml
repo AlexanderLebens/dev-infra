@@ -30,6 +30,9 @@ vikunja:
               authurl: https://authentik.alexlebens.dev/application/o/vikunja/
               clientid: mi6i7dPwBIRdxomnqrZNsu3t7dagRqn4apS90XK2
               clientsecret: 0ZLnh8KroFInGQW9eKl0WAoxXfBrqpiRDePHUCuUCv9JqeVvLd5c1evFJY9EcwtEUP8HopEaIcZH6MBjJG4T5MbxZcXxob21oVIICuuaWEcte3lxyBrYsxPy6ElAVACl
+      database:
+        type: sqlite
+        path: /sqlite/vikunja.db
     ingress:
       enabled: true
       className: traefik
