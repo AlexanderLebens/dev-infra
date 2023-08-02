@@ -1,6 +1,6 @@
 vikunja:
   frontend:
-    apiUrl: https://vikunja.alexlebens.dev/
+    apiUrl: https://vikunja.alexlebens.dev/api/v1
     ingress:
       enabled: true
       className: traefik
