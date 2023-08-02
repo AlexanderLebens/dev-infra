@@ -37,6 +37,7 @@ vikunja:
       database:
         type: postgres
         user: vikunja
+        password: 35etdgcb#%ETDGCB
         host: vikunja-postgresql
         database: vikunja
       cache:
@@ -45,6 +46,7 @@ vikunja:
       redis:
         enabled: true
         host: vikunja-redis-master:6379
+        password: 35etdgcb#%ETDGCB
         db: 0
     ingress:
       enabled: true
@@ -65,17 +67,6 @@ vikunja:
     persistence:
       vikunja-nginx:
         enabled: false
-    envFrom:
-    - name: VIKUNJA_DATABASE_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: vikunja-credentials
-          key: dbpassword
-    - name: VIKUNJA_REDIS_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: vikunja-credentials
-          key: redispassword
   postgresqlEnabled: true
   postgresql:
     postgresql:
