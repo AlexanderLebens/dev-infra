@@ -33,7 +33,7 @@ vikunja:
       service:
         motd: Welcome to Vikunja
         frontendurl: https://vikunja.alexlebens.dev/
-        timezone: MDT
+        timezone: MST
       database:
         type: postgres
         user: vikunja
