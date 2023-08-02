@@ -37,7 +37,7 @@ vikunja:
       database:
         type: postgres
         user: vikunja
-        host: postgresql
+        host: vikunja-postgresql
         database: vikunja
       cache:
         enabled: true
