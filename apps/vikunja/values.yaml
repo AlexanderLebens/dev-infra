@@ -35,8 +35,11 @@ vikunja:
               clientid: mi6i7dPwBIRdxomnqrZNsu3t7dagRqn4apS90XK2
               clientsecret: 0ZLnh8KroFInGQW9eKl0WAoxXfBrqpiRDePHUCuUCv9JqeVvLd5c1evFJY9EcwtEUP8HopEaIcZH6MBjJG4T5MbxZcXxob21oVIICuuaWEcte3lxyBrYsxPy6ElAVACl
       database:
-        type: sqlite
-        path: /sqlite/vikunja.db
+        type: postgres
+        user: vikunja
+        password: secretpassword
+        host: postgres
+        database: vikunja
     ingress:
       enabled: true
       className: traefik
@@ -53,8 +56,9 @@ vikunja:
         - hosts:
             - vikunja.alexlebens.dev
           secretName: vikunja-secret-tls
-    extraVolumeMounts:
-      - mountPath: /sqlite/vikunja.db
-        name: sqlite
-  postgresqlEnabled: false
-  redisEnabled: false
+  postgresqlEnabled: true
+  postgresql:
+    auth:
+      username: vikunja
+      password: secretpassword
+      database: vikunja
