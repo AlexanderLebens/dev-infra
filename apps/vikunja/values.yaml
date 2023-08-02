@@ -38,7 +38,7 @@ vikunja:
         type: postgres
         user: vikunja
         password: secretpassword
-        host: postgres
+        host: vikunja-postgresql
         database: vikunja
     ingress:
       enabled: true
