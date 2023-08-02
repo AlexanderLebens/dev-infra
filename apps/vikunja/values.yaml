@@ -3,7 +3,7 @@ vikunja:
     apiUrl: https://vikunja.alexlebens.dev/api/v1
     securityContext:
       allowPrivilegeEscalation: true
-      runAsUser: 1000
+      runAsUser: 101
       capabilities:
         add:
         - NET_BIND_SERVICE
