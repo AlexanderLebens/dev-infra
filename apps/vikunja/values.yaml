@@ -94,16 +94,16 @@ vikunja:
               subPath: config.yaml
               mountPath: /etc/vikunja/config.yaml
     envFrom:
-      - name: VIKUNJA_DATABASE_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: vikunja-credentials
-            key: dbpassword
-      - name: VIKUNJA_REDIS_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: vikunja-credentials
-            key: redispassword
+    - name: VIKUNJA_DATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: vikunja-credentials
+          key: dbpassword
+    - name: VIKUNJA_REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: vikunja-credentials
+          key: redispassword
   postgresqlEnabled: true
   postgresql:
     postgresql:
