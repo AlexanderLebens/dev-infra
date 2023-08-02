@@ -40,6 +40,8 @@ vikunja:
         password: secretpassword
         host: vikunja-postgresql
         database: vikunja
+      log:
+        level: debug
     ingress:
       enabled: true
       className: traefik
