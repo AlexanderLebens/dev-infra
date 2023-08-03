@@ -44,9 +44,6 @@ homepage:
           - Dashboard Icons:
               - abbr: DI
                 href: https://github.com/walkxcode/dashboard-icons/tree/main/png
-          - Digital Ocean:
-              - abbr: DO
-                href: https://cloud.digitalocean.com/projects/4c2f0ee4-0845-46f0-83a7-ec1646813cbf/resources?i=b869cc
 
     services:
       - Services:
