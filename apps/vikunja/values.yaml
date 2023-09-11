@@ -21,8 +21,6 @@ vikunja:
       type: ClusterIP
       port: 8080
     env:
-      - name: VIKUNJA_HTTP_PORT
-        value: "8080"
       - name: VIKUNJA_HTTP2_PORT
         value: "8081"
   api:
