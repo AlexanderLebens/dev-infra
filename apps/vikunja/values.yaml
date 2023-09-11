@@ -17,6 +17,14 @@ vikunja:
         - hosts:
             - vikunja.alexlebens.dev
           secretName: vikunja-secret-tls
+    service:
+      type: ClusterIP
+      port: 8080
+    env:
+      - name: VIKUNJA_HTTP_PORT
+        value: "8080"
+      - name: VIKUNJA_HTTP2_PORT
+        value: "8081"
   api:
     config:
       service:
